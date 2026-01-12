@@ -1,43 +1,83 @@
-# Movie Recommendation system
-Production-grade recommendation engine delivering personalized movie suggestions using collaborative filtering on distributed user interaction data with PySpark and real-time streaming capabilities.
+# Movie Recommendation System
+
+Production-grade recommendation engine delivering personalized movie suggestions using collaborative filtering on distributed user interaction data with PySpark.
 
 ## Project Overview
 
-Built an end-to-end ML pipeline that processes millions of user-movie interactions to generate personalized recommendations, demonstrating skills in distributed computing, MLOps and scalable architecture.
+Built an end-to-end ML pipeline that processes user-movie interactions to generate personalized recommendations using the Netflix Prize dataset, demonstrating skills in distributed computing, machine learning, and data engineering.
 
-## Architecture & Implementation Phase
+## Dataset
 
+Source: Netflix Prize Dataset (Kaggle)
+Size: Sample of 4,000 ratings from combined_data files (1-4)
+Structure: User ratings (customer_id, movie_id, rating, date) + Movie metadata (movie_id, year, title)
 
-**Phase 1: Data Foundation**
-- Data ingestion, cleaning, and feature engineering
-- Distributed processing with PySpark
+## Current Implementation (Phase 1)
 
-**Phase 2: Automated Pipelines**  
-- Batch processing orchestration (Airflow)
-- CI/CD integration (Jenkins)
+### Data Processing
+- Parsed hierarchical text files with custom Netflix format (MovieID headers followed by ratings)
+- Handled 4 combined_data files with state-based parsing logic
+- Merged datasets and joined with movie metadata
+- Created Spark DataFrames and SQL tables for analysis
 
-**Phase 3: ML Model Development**
-- Collaborative filtering using ALS (Alternating Least Squares)
-- Model training on distributed clusters
+### Machine Learning Model
+- Algorithm: Collaborative Filtering using ALS (Alternating Least Squares)
+- Approach: Matrix Factorization to learn latent user preferences and movie features
+- Library: PySpark MLlib
+- Hyperparameters: rank=10, maxIter=10, regParam=0.01
+- Output: Top-5 personalized movie recommendations per user
 
-**Phase 4: Model Deployment**
-- REST API for real-time inference
-- Model versioning and monitoring
-
-**Phase 5: Real-Time Enhancement**
-- Streaming data ingestion with Kafka
-- Mini-batch processing for near real-time updates
+### Key Features
+- Distributed data processing with PySpark
+- Spark SQL for data exploration and analysis
+- Prediction of user ratings for unwatched movies
+- Recommendation generation with predicted rating scores
 
 ## Tech Stack
 
-**Data Processing:** PySpark, Apache Kafka, Pandas  
-**ML/AI:** Scikit-learn, PySpark MLlib (ALS)  
-**Orchestration:** Apache Airflow, Jenkins  
-**Storage:** PostgreSQL, AWS S3  
-**Deployment:** Docker, FastAPI  
+Data Processing: PySpark, Pandas
+Machine Learning: PySpark MLlib (ALS)
+Data Storage: Spark SQL Tables
+Environment: Kaggle Notebooks
 
+## Future Roadmap
 
+### Phase 2: Cloud Deployment and Automation
+- Migrate to Databricks platform
+- Build automated data pipelines using Databricks Workflows
+- Store processed data in Delta Lake
+- Implement MLflow for model tracking and versioning
 
-## Datasets Used:
+### Phase 3: Advanced Recommendation Techniques
+- Implement Content-Based Filtering using movie metadata
+- Build Hybrid recommendation system (Collaborative + Content-Based)
+- Compare performance across all three approaches
+- Create visualizations showing comparative analysis
 
-- MovieLens dataset from Kaggle (25M+ ratings, 60K+ movies)
+### Phase 4: Production Features
+- Real-time recommendation serving API
+- Streaming data ingestion with Kafka
+- A/B testing framework
+- Performance monitoring and evaluation metrics
+
+## Getting Started
+
+Install dependencies
+pip install pyspark pandas
+
+Load and process data
+Code snippets will be added
+
+Train model
+Code snippets will be added
+
+Generate recommendations
+Code snippets will be added
+
+## Project Status
+
+Phase 1: Local prototype with collaborative filtering - Complete
+Phase 2: Cloud deployment and pipeline automation - Planned
+Phase 3: Multi-algorithm comparison - Planned
+Phase 4: Production deployment - Planned
+
